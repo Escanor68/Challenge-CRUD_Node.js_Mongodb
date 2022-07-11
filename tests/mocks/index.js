@@ -4,6 +4,11 @@ const res = Object.create(http.ServerResponse.prototype);
 
 const mockResponse = () => {
 
+	// if(!res.status) {
+	// 	this.status = 200;
+	// 	return this;
+	// }
+
 	res.status = function status(code) {
 		this.status = code;
 		return this;

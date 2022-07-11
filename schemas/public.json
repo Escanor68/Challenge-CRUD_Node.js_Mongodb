@@ -11,11 +11,11 @@
 	},
 	"tags": [
 		{
-			"name": "Estudiante",
+			"name": "Product",
 			"description": "For managing User"
 		},
 		{
-			"name": "Comision",
+			"name": "Cart",
 			"description": "For managing User"
 		}
 	],
@@ -40,13 +40,13 @@
 		}
 	],
 	"paths": {
-		"/api/comision/alumnosConDocente": {
-			"get": {
-				"operationId": "ListOfStudentsWithTheTeacher",
+		"/api/carrito/added/_id/item": {
+			"put": {
+				"operationId": "add a product to cart",
 				"tags": [
-					"Comision"
+					"Cart"
 				],
-				"summary": "List Of Students With The Teacher",
+				"summary": "add a cart",
 				"security": [
 					{
 						"ApiKey": [],
@@ -54,19 +54,19 @@
 					}
 				],
 				"requestBody": {
-					"description": "Query if a student studies with a teacher",
+					"description": "Add a Carts in database",
 					"required": true,
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/ListOfStudentsWithTheTeacher"
+								"$ref": "#/components/schemas/AddCart"
 							}
 						}
 					}
 				},
 				"responses": {
 					"200": {
-						"$ref": "#/components/responses/SuccessListOfStudentsWithTheTeacherResponse"
+						"$ref": "#/components/responses/SuccessAddCartResponse"
 					},
 					"400": {
 						"$ref": "#/components/responses/BadRequest"
@@ -77,159 +77,85 @@
 				}
 			}
 		},
-		"/api/comision/cuantosDocentesParaEstudiantes": {
-			"get": {
-				"operationId": "HowManyTeachersForStudents",
-				"tags": [
-					"Comision"
-				],
-				"summary": "Query if a How many teachers for students?",
-				"security": [
-					{
-						"ApiKey": [],
-						"ApiSecret": []
-					}
-				],
-				"requestBody": {
-					"description": "Query if a student studies with a teacher",
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/HowManyTeachersForStudents"
-							}
-						}
-					}
-				},
-				"responses": {
-					"200": {
-						"$ref": "#/components/responses/SuccessHowManyTeachersForStudentsResponse"
-					},
-					"400": {
-						"$ref": "#/components/responses/BadRequest"
-					},
-					"500": {
-						"$ref": "#/components/responses/InternalError"
-					}
-				}
-			}
-		},
-		"/api/comision/docenteEstudiante": {
-			"get": {
-				"operationId": "ShareDocenteEstudianteInCourse",
-				"tags": [
-					"Comision"
-				],
-				"summary": "Query if a student studies with a teacher",
-				"security": [
-					{
-						"ApiKey": [],
-						"ApiSecret": []
-					}
-				],
-				"requestBody": {
-					"description": "Query if a student studies with a teacher",
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/ShareDocenteEstudianteInCourse"
-							}
-						}
-					}
-				},
-				"responses": {
-					"200": {
-						"$ref": "#/components/responses/SuccessQueryDocenteEstudianteResponse"
-					},
-					"400": {
-						"$ref": "#/components/responses/BadRequest"
-					},
-					"500": {
-						"$ref": "#/components/responses/InternalError"
-					}
-				}
-			}
-		},
-		"/api/comision/mejoresEstudiantes": {
-			"get": {
-				"operationId": "TopStudents",
-				"tags": [
-					"Comision"
-				],
-				"summary": "The Top Students",
-				"security": [
-					{
-						"ApiKey": [],
-						"ApiSecret": []
-					}
-				],
-				"requestBody": {
-					"description": "The Top Students",
-					"required": false,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/TopStudents"
-							}
-						}
-					}
-				},
-				"responses": {
-					"200": {
-						"$ref": "#/components/responses/SuccessTopStudentsResponse"
-					},
-					"400": {
-						"$ref": "#/components/responses/BadRequest"
-					},
-					"500": {
-						"$ref": "#/components/responses/InternalError"
-					}
-				}
-			}
-		},
-		"/api/comision/unicaComision": {
-			"get": {
-				"operationId": "AreThereOnlyCourse",
-				"tags": [
-					"Comision"
-				],
-				"summary": "Are there only course?",
-				"security": [
-					{
-						"ApiKey": [],
-						"ApiSecret": []
-					}
-				],
-				"requestBody": {
-					"description": "Know if there is a single commission",
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/AreThereOnlyCourse"
-							}
-						}
-					}
-				},
-				"responses": {
-					"200": {
-						"$ref": "#/components/responses/SuccessAreThereOnlyCourseResponse"
-					},
-					"400": {
-						"$ref": "#/components/responses/BadRequest"
-					},
-					"500": {
-						"$ref": "#/components/responses/InternalError"
-					}
-				}
-			}
-		},
-		"/api/estudiante/create": {
+		"/api/carrito/create": {
 			"post": {
-				"operationId": "createstudent",
+				"operationId": "createcart",
 				"tags": [
-					"Student"
+					"Cart"
+				],
+				"summary": "Create a cart",
+				"security": [
+					{
+						"ApiKey": [],
+						"ApiSecret": []
+					}
+				],
+				"requestBody": {
+					"description": "Create a Carts in database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateCart"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/SuccessCreateCartResponse"
+					},
+					"400": {
+						"$ref": "#/components/responses/BadRequest"
+					},
+					"500": {
+						"$ref": "#/components/responses/InternalError"
+					}
+				}
+			}
+		},
+		"/api/carrito/get/_id": {
+			"get": {
+				"operationId": "getcart",
+				"tags": [
+					"Cart"
+				],
+				"summary": "Get a cart",
+				"security": [
+					{
+						"ApiKey": [],
+						"ApiSecret": []
+					}
+				],
+				"requestBody": {
+					"description": "Get a Carts in database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/GetCart"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/SuccessGetCartResponse"
+					},
+					"400": {
+						"$ref": "#/components/responses/BadRequest"
+					},
+					"500": {
+						"$ref": "#/components/responses/InternalError"
+					}
+				}
+			}
+		},
+		"/api/producto/create": {
+			"post": {
+				"operationId": "createproduct",
+				"tags": [
+					"Product"
 				],
 				"summary": "Create a products",
 				"security": [
@@ -239,19 +165,19 @@
 					}
 				],
 				"requestBody": {
-					"description": "Create a student in database",
+					"description": "Create a products in database",
 					"required": true,
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/CreateStudent"
+								"$ref": "#/components/schemas/CreateProduct"
 							}
 						}
 					}
 				},
 				"responses": {
 					"200": {
-						"$ref": "#/components/responses/SuccessCreateStudentResponse"
+						"$ref": "#/components/responses/SuccessCreateProductResponse"
 					},
 					"400": {
 						"$ref": "#/components/responses/BadRequest"
@@ -262,13 +188,13 @@
 				}
 			}
 		},
-		"/api/estudiante/enroll": {
-			"post": {
-				"operationId": "enrollstudent",
+		"/api/producto/get": {
+			"get": {
+				"operationId": "getproduct",
 				"tags": [
-					"Estudiante"
+					"Product"
 				],
-				"summary": "Enroll a Estudiante",
+				"summary": "Bring all products",
 				"security": [
 					{
 						"ApiKey": [],
@@ -276,19 +202,19 @@
 					}
 				],
 				"requestBody": {
-					"description": "Enroll a Estudiante in database",
+					"description": "Get all products",
 					"required": true,
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/EnrollEstudiante"
+								"$ref": "#/components/schemas/GetProduct"
 							}
 						}
 					}
 				},
 				"responses": {
 					"200": {
-						"$ref": "#/components/responses/SuccessEnrollEstudianteResponse"
+						"$ref": "#/components/responses/SuccessGetProductResponse"
 					},
 					"400": {
 						"$ref": "#/components/responses/BadRequest"
@@ -299,13 +225,13 @@
 				}
 			}
 		},
-		"/api/estudiante/forgot": {
-			"post": {
-				"operationId": "resetPassword",
+		"/api/producto/getbyid/_id": {
+			"get": {
+				"operationId": "getByIdproduct",
 				"tags": [
-					"Estudiante"
+					"Product"
 				],
-				"summary": "reset a password",
+				"summary": "Get By Id a products",
 				"security": [
 					{
 						"ApiKey": [],
@@ -313,19 +239,19 @@
 					}
 				],
 				"requestBody": {
-					"description": "Reset a password in student",
+					"description": "Get By Id a products in database",
 					"required": true,
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/ResetPassword"
+								"$ref": "#/components/schemas/GetByIdProduct"
 							}
 						}
 					}
 				},
 				"responses": {
 					"200": {
-						"$ref": "#/components/responses/SuccessResetPasswordResponse"
+						"$ref": "#/components/responses/SuccessGetByIdProductResponse"
 					},
 					"400": {
 						"$ref": "#/components/responses/BadRequest"
@@ -336,13 +262,13 @@
 				}
 			}
 		},
-		"/api/estudiante/login": {
-			"post": {
-				"operationId": "loginstudent",
+		"/api/producto/update/_id": {
+			"put": {
+				"operationId": "updateproduct",
 				"tags": [
-					"Estudiante"
+					"Product"
 				],
-				"summary": "Login a Estudiante",
+				"summary": "update a products",
 				"security": [
 					{
 						"ApiKey": [],
@@ -350,19 +276,19 @@
 					}
 				],
 				"requestBody": {
-					"description": "Login a Estudiante in database",
+					"description": "Update a products in database",
 					"required": true,
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/LoginEstudiante"
+								"$ref": "#/components/schemas/UpdateProduct"
 							}
 						}
 					}
 				},
 				"responses": {
 					"200": {
-						"$ref": "#/components/responses/SuccessLoginEstudianteResponse"
+						"$ref": "#/components/responses/SuccessUpdateProductResponse"
 					},
 					"400": {
 						"$ref": "#/components/responses/BadRequest"
@@ -459,229 +385,294 @@
 					"account-acc-02"
 				]
 			},
-			"Comision": {
-				"description": "Una Comision",
+			"Cart": {
+				"description": "Un carrito de compras",
 				"type": "object",
 				"properties": {
 					"id": {
 						"$ref": "#/components/schemas/id"
 					},
-					"materia": {
-						"description": "Una materia",
+					"email": {
+						"description": "mail del comprador",
 						"type": "string",
-						"example": "Paradigmas"
+						"example": "john.doe@example.com"
+					}
+				}
+			},
+			"CreateCart": {
+				"description": "Creación de una carrito de compras",
+				"type": "object",
+				"properties": {
+					"email": {
+						"$ref": "#/components/schemas/Cart/properties/email"
+					}
+				}
+			},
+			"GetCart": {
+				"description": "Obtecion de los datos de un carrito de compras",
+				"type": "object",
+				"properties": {
+					"email": {
+						"$ref": "#/components/schemas/Cart/properties/email"
 					},
-					"numero": {
-						"description": "Comision de la materia",
+					"itmes": {
+						"description": "listado de productos",
+						"type": "array"
+					}
+				}
+			},
+			"AddCart": {
+				"description": "Agregar un producto al carrito",
+				"type": "object",
+				"properties": {
+					"id": {
+						"$ref": "#/components/schemas/id"
+					},
+					"quantity": {
+						"description": "cantidad de productos",
 						"type": "number",
-						"example": 1
+						"example": 6
+					}
+				}
+			},
+			"Product": {
+				"description": "Un producto",
+				"type": "object",
+				"properties": {
+					"id": {
+						"$ref": "#/components/schemas/id"
 					},
-					"docentes": {
-						"description": "docentes de una materias",
-						"type": "array",
-						"example": [
-							{
-								"_id": "62693a3f53a0924e3915db02",
-								"dni": 41153418,
-								"name": "Ricardo Grebosz",
-								"materias": [
-									"Algoritmo"
-								]
-							}
-						]
+					"name": {
+						"description": "nombre de producto",
+						"type": "string",
+						"example": "Honey"
 					},
-					"calificaciones": {
-						"description": "Un listado de las calificaciones de los estudiantes",
-						"type": "array",
-						"example": [
-							9,
-							"Ricardo Grebosz",
-							5,
-							"Timoteo Grebosz"
-						]
+					"description": {
+						"description": "descripción del producto",
+						"type": "string",
+						"example": ""
 					},
-					"horarios": {
-						"description": "horarios de la materia en cuestion",
+					"imageUrl": {
+						"description": "imagen del producto",
+						"type": "string",
+						"example": "beer"
+					},
+					"brandName": {
+						"description": "marca del producto",
+						"type": "string",
+						"example": "Stella"
+					},
+					"attributes": {
+						"description": "atributos del producto",
 						"type": "object",
 						"properties": {
-							"lunes": {
-								"description": "día de ejemplo",
+							"style": {
+								"description": "estilo del producto",
 								"type": "string",
-								"example": "18.30 a 20.00"
+								"example": "honey"
+							},
+							"ibu": {
+								"description": "ibu del producto variable que indica el amargor de producto",
+								"type": "number",
+								"example": 4
+							},
+							"abv": {
+								"description": "abv del producto variable que indica el amargor de producto",
+								"type": "number",
+								"example": 3
 							}
 						}
 					},
-					"estudiantesInscriptos": {
-						"description": "listado de los estuidiantes de la carrera",
-						"type": "array",
-						"example": [
-							{
-								"_id": "627193832b1bd51082177a88",
-								"email": "abariciartg@gmail.com",
-								"name": "Timoteo Grebosz",
-								"contraseñaHash": "$2a$12$qJd7NZ3nP2KBmzfYxJ5IX.rLqR18VhaOt6/B7ofReT3Lp0Jpk4.p2"
-							}
-						]
+					"price": {
+						"description": "precio del producto",
+						"type": "string",
+						"example": 340
+					},
+					"inStock": {
+						"description": "Si hay stock del producto",
+						"type": "boolean",
+						"example": true
+					},
+					"isVisible": {
+						"description": "Si hay productos",
+						"type": "boolean",
+						"example": true
+					},
+					"launchDate": {
+						"description": "fabricacion del producto",
+						"type": "string",
+						"example": "05/04/2022"
 					},
 					"status": {
 						"$ref": "#/components/schemas/status"
 					}
 				}
 			},
-			"ShareDocenteEstudianteInCourse": {
-				"description": "Saber si se encuentra el par docente con estudiante",
+			"CreateProduct": {
+				"description": "Creación de un product.",
 				"type": "object",
 				"properties": {
-					"docente": {
-						"description": "Id del docente",
-						"type": "string",
-						"example": "62693a3f53a0924e3915db02"
-					},
-					"estudiante": {
-						"description": "Id del estudiante",
-						"type": "string",
-						"example": "627193832b1bd51082177a88"
-					}
-				},
-				"required": [
-					"docente",
-					"estudiante"
-				]
-			},
-			"HowManyTeachersForStudents": {
-				"description": "Saber si el numero de profesores es suficiente para la cantidad de estudiantes, no recibe nada como parametro porque se fija en todas las comisiones"
-			},
-			"TopStudents": {
-				"description": "Lista de los mejores estudiantes"
-			},
-			"TheStudentWithTheMostApprovedCourses": {
-				"description": "El estudiante con mas cursos aprobados"
-			},
-			"AreThereOnlyCourse": {
-				"description": "Saber si hay una unica comision"
-			},
-			"ListOfStudentsWithTheTeacher": {
-				"description": "Saber el listado de alumnos que tiene un profesor",
-				"type": "object",
-				"properties": {
-					"docente": {
-						"description": "Id del docente",
-						"type": "string",
-						"example": "62693a3f53a0924e3915db02"
-					}
-				}
-			},
-			"Estudiante": {
-				"description": "Un estudiante",
-				"type": "object",
-				"properties": {
-					"id": {
-						"$ref": "#/components/schemas/id"
-					},
-					"email": {
-						"description": "email del estudiante",
-						"type": "string",
-						"example": "ricardo.grebosz@mi.unc.edu.ar"
-					},
-					"contraseña": {
-						"description": "password de un estudiante",
-						"type": "string",
-						"example": "123456"
-					},
-					"materias": {
-						"description": "nombres de las materias",
-						"type": "array",
-						"example": [
-							"Matematica Discreta 2",
-							"Algoritmos"
-						]
-					},
-					"status": {
-						"$ref": "#/components/schemas/status"
-					}
-				}
-			},
-			"LoginEstudiante": {
-				"description": "Logeo de un Estudiante.",
-				"type": "object",
-				"properties": {
-					"email": {
-						"$ref": "#/components/schemas/Estudiante/properties/email"
-					},
-					"contraseña": {
-						"$ref": "#/components/schemas/Estudiante/properties/contraseña"
-					}
-				},
-				"required": [
-					"email",
-					"contraseña"
-				]
-			},
-			"EnrollEstudiante": {
-				"description": "Inscripción de un Estudiante a una materia.",
-				"type": "object",
-				"properties": {
-					"materia": {
-						"description": "Id del materia",
-						"type": "string",
-						"example": "627193832b1bd51082177a88"
-					},
-					"email": {
-						"$ref": "#/components/schemas/Estudiante/properties/email"
-					}
-				},
-				"required": [
-					"email",
-					"materia"
-				]
-			},
-			"ForGot": {
-				"description": "Olvido de contraseña",
-				"type": "object",
-				"properties": {
-					"email": {
-						"$ref": "#/components/schemas/Estudiante/properties/email"
-					}
-				},
-				"required": [
-					"email"
-				]
-			},
-			"ResetPassword": {
-				"description": "Modificacion de contraseña",
-				"type": "object",
-				"properties": {
-					"password": {
-						"$ref": "#/components/schemas/Estudiante/properties/contraseña"
-					},
-					"token": {
-						"description": "token de recuperacion",
-						"type": "string",
-						"example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjY4NjkxNjlhMWU1N2I0MzcyOTFjNmMiLCJlbWFpbCI6InJpY2FyZG8uZ3JlYm9zekBtaS51bmMuZWR1LmFyIiwibmFtZSI6IlJpY2FyZG8gR3JlYm9zeiIsImNvbnRyYXNlw7FhSGFzaCI6IiQyYSQxMiRxSmQ3TlozblAyS0JtemZZeEo1SVguckxxUjE4VmhhT3Q2L0I3b2ZSZVQzTHAwSnBrNC5wMiIsImlhdCI6MTY1MzA3NTU4NSwiZXhwIjoxNjUzMTA0Mzg1fQ.nAIqEVZjxGEL7ZTvWwUZ-_aLRZH48sFW2MMJ0om2Faw"
-					}
-				}
-			},
-			"CreateStudent": {
-				"description": "Crear un estudiante en la base de datos",
-				"type": "object",
-				"properties": {
-					"email": {
-						"$ref": "#/components/schemas/Estudiante/properties/email"
-					},
-					"contraseña": {
-						"$ref": "#/components/schemas/Estudiante/properties/contraseña"
-					},
 					"name": {
-						"description": "nombre del estudiante",
-						"type": "string",
-						"example": "Timoteo Grebosz"
+						"$ref": "#/components/schemas/Product/properties/name"
+					},
+					"description": {
+						"$ref": "#/components/schemas/Product/properties/description"
+					},
+					"imageUrl": {
+						"$ref": "#/components/schemas/Product/properties/imageUrl"
+					},
+					"brandName": {
+						"$ref": "#/components/schemas/Product/properties/brandName"
+					},
+					"style": {
+						"$ref": "#/components/schemas/Product/properties/attributes/properties/style"
+					},
+					"ibu": {
+						"$ref": "#/components/schemas/Product/properties/attributes/properties/ibu"
+					},
+					"abv": {
+						"$ref": "#/components/schemas/Product/properties/attributes/properties/abv"
+					},
+					"price": {
+						"$ref": "#/components/schemas/Product/properties/price"
+					},
+					"inStock": {
+						"$ref": "#/components/schemas/Product/properties/inStock"
+					},
+					"isVisible": {
+						"$ref": "#/components/schemas/Product/properties/isVisible"
+					},
+					"launchDate": {
+						"$ref": "#/components/schemas/Product/properties/launchDate"
 					}
 				},
 				"required": [
-					"email",
 					"name",
-					"contraseña"
+					"imageUrl",
+					"brandName",
+					"style",
+					"ibu",
+					"abv",
+					"price",
+					"inStock"
 				]
+			},
+			"UpdateProduct": {
+				"description": "Actualización de un product.",
+				"type": "object",
+				"properties": {
+					"name": {
+						"$ref": "#/components/schemas/Product/properties/name"
+					},
+					"description": {
+						"$ref": "#/components/schemas/Product/properties/description"
+					},
+					"imageUrl": {
+						"$ref": "#/components/schemas/Product/properties/imageUrl"
+					},
+					"brandName": {
+						"$ref": "#/components/schemas/Product/properties/brandName"
+					},
+					"style": {
+						"$ref": "#/components/schemas/Product/properties/attributes/properties/style"
+					},
+					"ibu": {
+						"$ref": "#/components/schemas/Product/properties/attributes/properties/ibu"
+					},
+					"abv": {
+						"$ref": "#/components/schemas/Product/properties/attributes/properties/abv"
+					},
+					"price": {
+						"$ref": "#/components/schemas/Product/properties/price"
+					},
+					"inStock": {
+						"$ref": "#/components/schemas/Product/properties/inStock"
+					},
+					"isVisible": {
+						"$ref": "#/components/schemas/Product/properties/isVisible"
+					},
+					"launchDate": {
+						"$ref": "#/components/schemas/Product/properties/launchDate"
+					}
+				}
+			},
+			"GetProduct": {
+				"description": "Actualización de un product.",
+				"type": "object",
+				"properties": {
+					"name": {
+						"$ref": "#/components/schemas/Product/properties/name"
+					},
+					"description": {
+						"$ref": "#/components/schemas/Product/properties/description"
+					},
+					"imageUrl": {
+						"$ref": "#/components/schemas/Product/properties/imageUrl"
+					},
+					"brandName": {
+						"$ref": "#/components/schemas/Product/properties/brandName"
+					},
+					"style": {
+						"$ref": "#/components/schemas/Product/properties/attributes/properties/style"
+					},
+					"ibu": {
+						"$ref": "#/components/schemas/Product/properties/attributes/properties/ibu"
+					},
+					"abv": {
+						"$ref": "#/components/schemas/Product/properties/attributes/properties/abv"
+					},
+					"price": {
+						"$ref": "#/components/schemas/Product/properties/price"
+					},
+					"inStock": {
+						"$ref": "#/components/schemas/Product/properties/inStock"
+					},
+					"isVisible": {
+						"$ref": "#/components/schemas/Product/properties/isVisible"
+					},
+					"launchDate": {
+						"$ref": "#/components/schemas/Product/properties/launchDate"
+					}
+				}
+			},
+			"GetByIdProduct": {
+				"description": "Actualización de un product.",
+				"type": "object",
+				"properties": {
+					"name": {
+						"$ref": "#/components/schemas/Product/properties/name"
+					},
+					"description": {
+						"$ref": "#/components/schemas/Product/properties/description"
+					},
+					"imageUrl": {
+						"$ref": "#/components/schemas/Product/properties/imageUrl"
+					},
+					"brandName": {
+						"$ref": "#/components/schemas/Product/properties/brandName"
+					},
+					"style": {
+						"$ref": "#/components/schemas/Product/properties/attributes/properties/style"
+					},
+					"ibu": {
+						"$ref": "#/components/schemas/Product/properties/attributes/properties/ibu"
+					},
+					"abv": {
+						"$ref": "#/components/schemas/Product/properties/attributes/properties/abv"
+					},
+					"price": {
+						"$ref": "#/components/schemas/Product/properties/price"
+					},
+					"inStock": {
+						"$ref": "#/components/schemas/Product/properties/inStock"
+					},
+					"isVisible": {
+						"$ref": "#/components/schemas/Product/properties/isVisible"
+					},
+					"launchDate": {
+						"$ref": "#/components/schemas/Product/properties/launchDate"
+					}
+				}
 			}
 		},
 		"securitySchemes": {
@@ -1211,14 +1202,14 @@
 					}
 				}
 			},
-			"SuccessLoginEstudianteResponse": {
-				"description": "The students login",
+			"SuccessCreateProductResponse": {
+				"description": "The item was create",
 				"content": {
 					"application/json": {
 						"schema": {
 							"type": "object",
 							"properties": {
-								"login": {
+								"productosInsertId": {
 									"$ref": "#/components/schemas/id"
 								}
 							}
@@ -1226,14 +1217,14 @@
 					}
 				}
 			},
-			"SuccessForGotResponse": {
-				"description": "Forgot password",
+			"SuccessUpdateProductResponse": {
+				"description": "The item was updated",
 				"content": {
 					"application/json": {
 						"schema": {
 							"type": "object",
 							"properties": {
-								"login": {
+								"id": {
 									"$ref": "#/components/schemas/id"
 								}
 							}
@@ -1241,14 +1232,14 @@
 					}
 				}
 			},
-			"SuccessResetPasswordResponse": {
-				"description": "Reset a password",
+			"SuccessGetProductResponse": {
+				"description": "get all products and may or may not have filters",
 				"content": {
 					"application/json": {
 						"schema": {
 							"type": "object",
 							"properties": {
-								"login": {
+								"id": {
 									"$ref": "#/components/schemas/id"
 								}
 							}
@@ -1256,14 +1247,14 @@
 					}
 				}
 			},
-			"SuccessEnrollEstudianteResponse": {
-				"description": "The students enroll",
+			"SuccessGetByIdProductResponse": {
+				"description": "get a products",
 				"content": {
 					"application/json": {
 						"schema": {
 							"type": "object",
 							"properties": {
-								"enroll": {
+								"id": {
 									"$ref": "#/components/schemas/id"
 								}
 							}
@@ -1271,119 +1262,45 @@
 					}
 				}
 			},
-			"SuccessQueryDocenteEstudianteResponse": {
-				"description": "Query if a student studies with a teacher",
+			"SuccessCreateCartResponse": {
+				"description": "The cart was create",
 				"content": {
 					"application/json": {
 						"schema": {
 							"type": "object",
 							"properties": {
-								"message": {
-									"description": "mensaje de la respuesta",
-									"type": "string",
-									"example": "The student Ricardo Grebosz does not take a course taught by the professor Ricardo Grebosz"
+								"cartInsertId": {
+									"$ref": "#/components/schemas/id"
 								}
 							}
 						}
 					}
 				}
 			},
-			"SuccessHowManyTeachersForStudentsResponse": {
-				"description": "Query if a How many teachers for students?",
+			"SuccessGetCartResponse": {
+				"description": "The cart was create",
 				"content": {
 					"application/json": {
 						"schema": {
 							"type": "object",
 							"properties": {
-								"message": {
-									"description": "mensaje de la respuesta a modo de ejemplo",
-									"type": "string",
-									"example": "All commissions are fine in the teacher-student relationship"
+								"carGetId": {
+									"$ref": "#/components/schemas/id"
 								}
 							}
 						}
 					}
 				}
 			},
-			"SuccessTopStudentsResponse": {
-				"description": "Top student",
+			"SuccessAddCartResponse": {
+				"description": "The cart was create",
 				"content": {
 					"application/json": {
 						"schema": {
 							"type": "object",
 							"properties": {
-								"message": {
-									"description": "mensaje de la respuesta a modo de ejemplo",
-									"type": "string",
-									"example": "The top student is ..."
-								}
-							}
-						}
-					}
-				}
-			},
-			"SuccessTheStudentWithTheMostApprovedCoursesResponse": {
-				"description": "The student with the most approved courses",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"message": {
-									"description": "mensaje de la respuesta a modo de ejemplo",
-									"type": "string",
-									"example": "The student with the most approved courses is ..."
-								}
-							}
-						}
-					}
-				}
-			},
-			"SuccessAreThereOnlyCourseResponse": {
-				"description": "Know if there is a single commission",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"message": {
-									"description": "mensaje de la respuesta a modo de ejemplo",
-									"type": "string",
-									"example": "One-time commissions are ..."
-								}
-							}
-						}
-					}
-				}
-			},
-			"SuccessListOfStudentsWithTheTeacherResponse": {
-				"description": "List of students with the teacher",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"message": {
-									"description": "mensaje de la respuesta a modo de ejemplo",
-									"type": "string",
-									"example": "List of students with the teacher Ricardo Grebosz: ..."
-								}
-							}
-						}
-					}
-				}
-			},
-			"SuccessCreateStudentResponse": {
-				"description": "List of students with the teacher",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"message": {
-									"description": "mensaje de la respuesta a modo de ejemplo",
-									"type": "string",
-									"example": "con un mensaje de que se inserto correctamente"
+								"carGetId": {
+									"$ref": "#/components/schemas/id"
 								}
 							}
 						}

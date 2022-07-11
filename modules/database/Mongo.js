@@ -1,6 +1,7 @@
 const { MongoClient } = require('mongodb');
 
 class Mongo {
+
 	constructor() {
 		this.url = process.env.URL_DB;
 		this.dbName = process.env.NAME_DATABASE;

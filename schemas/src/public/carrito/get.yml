@@ -1,0 +1,24 @@
+paths:
+  /api/carrito/get/_id:
+    get:
+      operationId: getcart
+      tags:
+        - Cart
+      summary: Get a cart
+      security:
+        - ApiKey: []
+          ApiSecret: []
+      requestBody:
+        description: Get a Carts in database
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GetCart"
+      responses:
+        "200":
+          $ref: "#/components/responses/SuccessGetCartResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalError"

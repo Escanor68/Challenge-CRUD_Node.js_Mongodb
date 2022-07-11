@@ -8,10 +8,7 @@
     "src/structs/",
     "src/structures",
     "src/routes/index.js",
-    "src/routes/comicion/index.js",
-    "src/routes/docente/index.js",
-    "src/routes/estudiante/index.js",
-    "src/routes/docente/src/login.js"
+    "src/routes/productos/index.js"
   ],
   "extension": [
     ".js"

@@ -1,0 +1,24 @@
+paths:
+  /api/carrito/added/_id/item:
+    put:
+      operationId: add a product to cart
+      tags:
+        - Cart
+      summary: add a cart
+      security:
+        - ApiKey: []
+          ApiSecret: []
+      requestBody:
+        description: Add a Carts in database
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddCart"
+      responses:
+        "200":
+          $ref: "#/components/responses/SuccessAddCartResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalError"

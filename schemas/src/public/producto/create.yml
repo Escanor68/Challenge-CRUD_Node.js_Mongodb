@@ -1,0 +1,24 @@
+paths:
+  /api/producto/create:
+    post:
+      operationId: createproduct
+      tags:
+        - Product
+      summary: Create a products
+      security:
+        - ApiKey: []
+          ApiSecret: []
+      requestBody:
+        description: Create a products in database
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateProduct"
+      responses:
+        "200":
+          $ref: "#/components/responses/SuccessCreateProductResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalError"

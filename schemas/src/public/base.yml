@@ -8,9 +8,9 @@ info:
     altText: Digesto Municipal
 
 tags:
-  - name: Estudiante
+  - name: Product
     description: For managing User
-  - name: Comision
+  - name: Cart
     description: For managing User
 
 servers:
@@ -250,7 +250,7 @@ components:
                 type: number
                 description: Internal code
                 example: 2
-
+    
     SuccessDeleteUserResponse:
       description: The user was deleted
       content:
@@ -260,15 +260,15 @@ components:
             properties:
               userDeleted:
                 $ref: "#/components/schemas/id"
-              message:
+              message: 
                 type: string
                 description: A message for success deleted
                 example: success
-              code:
+              code: 
                 type: number
                 description: Internal code
                 example: 2
-
+    
     SuccessCreateLegislationResponse:
       description: The legislation was created
       content:
@@ -286,7 +286,7 @@ components:
                 type: number
                 description: Internal code
                 example: 2
-
+    
     SuccessGetAllLegislationsResponse:
       description: all legislations
       content:
@@ -304,7 +304,7 @@ components:
                 type: array
                 items:
                   $ref: "#/components/schemas/Legislation"
-
+    
     SuccessGetAllAreasResponse:
       description: all areas
       content:
@@ -323,6 +323,7 @@ components:
                 items:
                   $ref: "#/components/schemas/Area"
 
+    
     SuccessDeleteLegislationResponse:
       description: the legislation was deleted
       content:
@@ -340,7 +341,7 @@ components:
                 type: number
                 description: Internal code
                 example: 2
-
+      
     SuccessDeleteAreaResponse:
       description: the area was deleted
       content:
@@ -500,129 +501,75 @@ components:
                 description: Internal code
                 example: 1
 
-    SuccessLoginEstudianteResponse:
-      description: The students login
+    SuccessCreateProductResponse:
+      description: The item was create
       content:
         application/json:
           schema:
             type: object
             properties:
-              login:
+              productosInsertId:
                 $ref: "#/components/schemas/id"
 
-    SuccessForGotResponse:
-      description: Forgot password
+    SuccessUpdateProductResponse:
+      description: The item was updated
       content:
         application/json:
           schema:
             type: object
             properties:
-              login:
+              id:
                 $ref: "#/components/schemas/id"
 
-    SuccessResetPasswordResponse:
-      description: Reset a password
+    SuccessGetProductResponse:
+      description: get all products and may or may not have filters
       content:
         application/json:
           schema:
             type: object
             properties:
-              login:
+              id:
                 $ref: "#/components/schemas/id"
 
-    SuccessEnrollEstudianteResponse:
-      description: The students enroll
+    SuccessGetByIdProductResponse:
+      description: get a products
       content:
         application/json:
           schema:
             type: object
             properties:
-              enroll:
+              id:
                 $ref: "#/components/schemas/id"
 
-    SuccessQueryDocenteEstudianteResponse:
-      description: Query if a student studies with a teacher
+    SuccessCreateCartResponse:
+      description: The cart was create
       content:
         application/json:
           schema:
             type: object
             properties:
-              message:
-                description: mensaje de la respuesta
-                type: string
-                example: "The student Ricardo Grebosz does not take a course taught by the professor Ricardo Grebosz"
+              cartInsertId:
+                $ref: "#/components/schemas/id"
 
-    SuccessHowManyTeachersForStudentsResponse:
-      description: Query if a How many teachers for students?
+    SuccessGetCartResponse:
+      description: The cart was create
       content:
         application/json:
           schema:
             type: object
             properties:
-              message:
-                description: mensaje de la respuesta a modo de ejemplo
-                type: string
-                example: "All commissions are fine in the teacher-student relationship"
+              carGetId:
+                $ref: "#/components/schemas/id"
 
-    SuccessTopStudentsResponse:
-      description: Top student
+    SuccessAddCartResponse:
+      description: The cart was create
       content:
         application/json:
           schema:
             type: object
             properties:
-              message:
-                description: mensaje de la respuesta a modo de ejemplo
-                type: string
-                example: "The top student is ..."
-
-    SuccessTheStudentWithTheMostApprovedCoursesResponse:
-      description: The student with the most approved courses
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                description: mensaje de la respuesta a modo de ejemplo
-                type: string
-                example: "The student with the most approved courses is ..."
-
-    SuccessAreThereOnlyCourseResponse:
-      description: Know if there is a single commission
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                description: mensaje de la respuesta a modo de ejemplo
-                type: string
-                example: "One-time commissions are ..."
-
-    SuccessListOfStudentsWithTheTeacherResponse:
-      description: List of students with the teacher
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                description: mensaje de la respuesta a modo de ejemplo
-                type: string
-                example: "List of students with the teacher Ricardo Grebosz: ..."
-
-    SuccessCreateStudentResponse:
-      description: List of students with the teacher
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                description: mensaje de la respuesta a modo de ejemplo
-                type: string
-                example: "Un mensaje de que se inserto correctamente"
+              carGetId:
+                $ref: "#/components/schemas/id"
 
     SuccessUpdateResponse:
       description: The item was updated

@@ -1,0 +1,24 @@
+paths:
+  /api/producto/update/_id:
+    put:
+      operationId: updateproduct
+      tags:
+        - Product
+      summary: update a products
+      security:
+        - ApiKey: []
+          ApiSecret: []
+      requestBody:
+        description: Update a products in database
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateProduct"
+      responses:
+        "200":
+          $ref: "#/components/responses/SuccessUpdateProductResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalError"

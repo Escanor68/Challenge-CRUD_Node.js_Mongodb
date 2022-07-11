@@ -1,0 +1,42 @@
+components:
+  schemas:
+    Cart:
+      description: Un carrito de compras
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/id"
+        email:
+          description: mail del comprador
+          type: string
+          example: john.doe@example.com
+
+    CreateCart:
+      description: Creación de una carrito de compras
+      type: object
+      properties:
+        email:
+          $ref: "#/components/schemas/Cart/properties/email"
+
+    GetCart: 
+      description: Obtecion de los datos de un carrito de compras
+      type: object
+      properties:
+        email:
+          $ref: "#/components/schemas/Cart/properties/email"
+        itmes: 
+          description: listado de productos
+          type: array
+
+    AddCart:
+      description: Agregar un producto al carrito
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/id"
+        quantity: 
+          description: cantidad de productos
+          type: number
+          example: 6
+        
+

@@ -1,0 +1,24 @@
+paths:
+  /api/producto/getbyid/_id:
+    get:
+      operationId: getByIdproduct
+      tags:
+        - Product
+      summary: Get By Id a products
+      security:
+        - ApiKey: []
+          ApiSecret: []
+      requestBody:
+        description: Get By Id a products in database
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GetByIdProduct"
+      responses:
+        "200":
+          $ref: "#/components/responses/SuccessGetByIdProductResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalError"

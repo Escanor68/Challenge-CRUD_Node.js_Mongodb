@@ -1,8 +1,9 @@
 require('dotenv').config();
 
 const express = require('express');
-const morgan = require('morgan');
+const path = require('path');
 const cors = require('cors');
+const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const routes = require('./src/routes');
 
@@ -25,6 +26,9 @@ app.use(bodyParser.json());
 app.listen(process.env.PORT, () => {
 	console.log('listening to port:', process.env.PORT);
 });
+
+const staticStr = path.join(__dirname, './src/public');
+app.use('/', express.static(staticStr));
 
 routes(app);
 

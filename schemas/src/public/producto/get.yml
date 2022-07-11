@@ -1,0 +1,24 @@
+paths:
+  /api/producto/get:
+    get:
+      operationId: getproduct
+      tags:
+        - Product
+      summary: Bring all products
+      security:
+        - ApiKey: []
+          ApiSecret: []
+      requestBody:
+        description: Get all products
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GetProduct"
+      responses:
+        "200":
+          $ref: "#/components/responses/SuccessGetProductResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalError"

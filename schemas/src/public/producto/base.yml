@@ -1,0 +1,179 @@
+components:
+  schemas:
+    Product:
+      description: Un producto
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/id"
+        name:
+          description: nombre de producto
+          type: string
+          example: Honey
+        description:
+          description: descripción del producto
+          type: string
+          example: ""
+        imageUrl:
+          description: imagen del producto
+          type: string
+          example: "beer"
+        brandName:
+          description: marca del producto
+          type: string
+          example: "Stella"
+        attributes:
+          description: atributos del producto
+          type: object
+          properties:
+            style:
+              description: estilo del producto
+              type: string
+              example: "honey"
+            ibu:
+              description: ibu del producto variable que indica el amargor de producto
+              type: number
+              example: 4
+            abv:
+              description: abv del producto variable que indica el amargor de producto
+              type: number
+              example: 3
+        price:
+          description: precio del producto
+          type: string
+          example: 340
+        inStock:
+          description: Si hay stock del producto
+          type: boolean
+          example: true
+        isVisible:
+          description: Si hay productos
+          type: boolean
+          example: true
+        launchDate:
+          description: fabricacion del producto
+          type: string
+          example: "05/04/2022"
+
+        status:
+          $ref: "#/components/schemas/status"
+
+    CreateProduct:
+      description: Creación de un product.
+      type: object
+      properties:
+        name:
+          $ref: "#/components/schemas/Product/properties/name"
+        description:
+          $ref: "#/components/schemas/Product/properties/description"
+        imageUrl: 
+          $ref: "#/components/schemas/Product/properties/imageUrl"
+        brandName:
+          $ref: "#/components/schemas/Product/properties/brandName"
+        style:
+          $ref: "#/components/schemas/Product/properties/attributes/properties/style"
+        ibu:
+          $ref: "#/components/schemas/Product/properties/attributes/properties/ibu"
+        abv:
+          $ref: "#/components/schemas/Product/properties/attributes/properties/abv"
+        price:
+          $ref: "#/components/schemas/Product/properties/price"
+        inStock:
+          $ref: "#/components/schemas/Product/properties/inStock"
+        isVisible:
+          $ref: "#/components/schemas/Product/properties/isVisible"
+        launchDate:
+          $ref: "#/components/schemas/Product/properties/launchDate"
+      required:
+        - name
+        - imageUrl
+        - brandName
+        - style
+        - ibu
+        - abv
+        - price
+        - inStock
+
+    UpdateProduct:
+      description: Actualización de un product.
+      type: object
+      properties:
+        name:
+          $ref: "#/components/schemas/Product/properties/name"
+        description:
+          $ref: "#/components/schemas/Product/properties/description"
+        imageUrl: 
+          $ref: "#/components/schemas/Product/properties/imageUrl"
+        brandName:
+          $ref: "#/components/schemas/Product/properties/brandName"
+        style:
+          $ref: "#/components/schemas/Product/properties/attributes/properties/style"
+        ibu:
+          $ref: "#/components/schemas/Product/properties/attributes/properties/ibu"
+        abv:
+          $ref: "#/components/schemas/Product/properties/attributes/properties/abv"
+        price:
+          $ref: "#/components/schemas/Product/properties/price"
+        inStock:
+          $ref: "#/components/schemas/Product/properties/inStock"
+        isVisible:
+          $ref: "#/components/schemas/Product/properties/isVisible"
+        launchDate:
+          $ref: "#/components/schemas/Product/properties/launchDate"
+
+    GetProduct:
+      description: Actualización de un product.
+      type: object
+      properties:
+        name:
+          $ref: "#/components/schemas/Product/properties/name"
+        description:
+          $ref: "#/components/schemas/Product/properties/description"
+        imageUrl: 
+          $ref: "#/components/schemas/Product/properties/imageUrl"
+        brandName:
+          $ref: "#/components/schemas/Product/properties/brandName"
+        style:
+          $ref: "#/components/schemas/Product/properties/attributes/properties/style"
+        ibu:
+          $ref: "#/components/schemas/Product/properties/attributes/properties/ibu"
+        abv:
+          $ref: "#/components/schemas/Product/properties/attributes/properties/abv"
+        price:
+          $ref: "#/components/schemas/Product/properties/price"
+        inStock:
+          $ref: "#/components/schemas/Product/properties/inStock"
+        isVisible:
+          $ref: "#/components/schemas/Product/properties/isVisible"
+        launchDate:
+          $ref: "#/components/schemas/Product/properties/launchDate"
+
+
+    GetByIdProduct:
+      description: Actualización de un product.
+      type: object
+      properties:
+        name:
+          $ref: "#/components/schemas/Product/properties/name"
+        description:
+          $ref: "#/components/schemas/Product/properties/description"
+        imageUrl: 
+          $ref: "#/components/schemas/Product/properties/imageUrl"
+        brandName:
+          $ref: "#/components/schemas/Product/properties/brandName"
+        style:
+          $ref: "#/components/schemas/Product/properties/attributes/properties/style"
+        ibu:
+          $ref: "#/components/schemas/Product/properties/attributes/properties/ibu"
+        abv:
+          $ref: "#/components/schemas/Product/properties/attributes/properties/abv"
+        price:
+          $ref: "#/components/schemas/Product/properties/price"
+        inStock:
+          $ref: "#/components/schemas/Product/properties/inStock"
+        isVisible:
+          $ref: "#/components/schemas/Product/properties/isVisible"
+        launchDate:
+          $ref: "#/components/schemas/Product/properties/launchDate"
+
+    
